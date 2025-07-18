@@ -9,8 +9,8 @@ const allowedOrigins = env.ANIWATCH_API_CORS_ALLOWED_ORIGINS
 
 export const corsConfig = cors({
     allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+    allowHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Access-Control-Allow-Origin"],
     maxAge: 600,
-    credentials: false, // Allow all origins when using '*'
-    origin: allowedOrigins,
+    credentials: false,
+    origin: allowedOrigins.includes("*") ? "*" : allowedOrigins,
 });
